@@ -1,0 +1,175 @@
+{
+  "name": "rightclickcodefolding",
+  "displayName": "Right Click Code Folding",
+  "description": "Simply fold / unfold / collapse / expand code block / region with a right click context menu. Why remember the shortcut, if you can right click them.",
+  "version": "1.0.0",
+  "icon": "images/rightclickcodefolding.png",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "rightclickcodefolding.foldToDefinitions",
+        "title": "Fold to Definitions"
+      },
+      {
+        "command": "rightclickcodefolding.foldToClassDefinitions",
+        "title": "Fold to Class Definitions"
+      },
+      {
+        "command": "rightclickcodefolding.fold",
+        "title": "Fold"
+      },
+      {
+        "command": "rightclickcodefolding.foldRecursively",
+        "title": "Fold Recursively"
+      },
+      {
+        "command": "rightclickcodefolding.foldAllBlockComments",
+        "title": "Fold All Block Comments"
+      },
+      {
+        "command": "rightclickcodefolding.foldAllMarkerRegions",
+        "title": "Fold All Regions"
+      },
+      {
+        "command": "rightclickcodefolding.foldAll",
+        "title": "Fold All"
+      },
+      {
+        "command": "rightclickcodefolding.foldAllExcept",
+        "title": "Fold All Except Selected",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "rightclickcodefolding.unfold",
+        "title": "Unfold"
+      },
+      {
+        "command": "rightclickcodefolding.unfoldRecursively",
+        "title": "Unfold Recursively"
+      },
+      {
+        "command": "rightclickcodefolding.unfoldAllMarkerRegions",
+        "title": "Unfold All Regions"
+      },
+      {
+        "command": "rightclickcodefolding.unfoldAll",
+        "title": "Unfold All"
+      },
+      {
+        "command": "rightclickcodefolding.unfoldAllExcept",
+        "title": "Unfold All Except Selected",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "rightclickcodefolding.createFoldingRangeFromSelection",
+        "title": "Manual Fold From Selected",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "rightclickcodefolding.removeManualFoldingRanges",
+        "title": "Remove Manual Fold"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "rightclickcodefolding",
+        "label": "Fold / Unfold"
+      }
+    ],
+    "menus": {
+      "rightclickcodefolding": [
+        {
+          "command": "rightclickcodefolding.foldToDefinitions",
+          "group": "rightclickcodefolding_group_0"
+        },
+        {
+          "command": "rightclickcodefolding.foldToClassDefinitions",
+          "group": "rightclickcodefolding_group_0"
+        },
+        {
+          "command": "rightclickcodefolding.fold",
+          "group": "rightclickcodefolding_group_1"
+        },
+        {
+          "command": "rightclickcodefolding.foldRecursively",
+          "group": "rightclickcodefolding_group_1"
+        },
+        {
+          "command": "rightclickcodefolding.foldAllBlockComments",
+          "group": "rightclickcodefolding_group_1"
+        },
+        {
+          "command": "rightclickcodefolding.foldAllMarkerRegions",
+          "group": "rightclickcodefolding_group_1"
+        },
+        {
+          "command": "rightclickcodefolding.foldAll",
+          "group": "rightclickcodefolding_group_1"
+        },
+        {
+          "command": "rightclickcodefolding.foldAllExcept",
+          "group": "rightclickcodefolding_group_1"
+        },
+        {
+          "command": "rightclickcodefolding.unfold",
+          "group": "rightclickcodefolding_group_2"
+        },
+        {
+          "command": "rightclickcodefolding.unfoldRecursively",
+          "group": "rightclickcodefolding_group_2"
+        },
+        {
+          "command": "rightclickcodefolding.unfoldAllMarkerRegions",
+          "group": "rightclickcodefolding_group_2"
+        },
+        {
+          "command": "rightclickcodefolding.unfoldAll",
+          "group": "rightclickcodefolding_group_2"
+        },
+        {
+          "command": "rightclickcodefolding.unfoldAllExcept",
+          "group": "rightclickcodefolding_group_2"
+        },
+        {
+          "command": "rightclickcodefolding.createFoldingRangeFromSelection",
+          "group": "rightclickcodefolding_group_3"
+        },
+        {
+          "command": "rightclickcodefolding.removeManualFoldingRanges",
+          "group": "rightclickcodefolding_group_4"
+        }
+      ],
+      "editor/context": [
+        {
+          "submenu": "rightclickcodefolding"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.96.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "eslint": "^9.16.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
