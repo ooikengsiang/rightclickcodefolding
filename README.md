@@ -45,3 +45,7 @@ This extension is created base on source code from
 
 Initial release.
 
+### 1.1.0
+
+Fixed fold to definition functionality to properly fold method definitions when parameters span multiple lines
+

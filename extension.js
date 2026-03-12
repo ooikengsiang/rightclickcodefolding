@@ -129,8 +129,10 @@ function performFoldToDefinitions(isClassDefinition) {
 						return kinds.includes(symbol.kind);
 					});
 		
+					// Filter for symbols that span multiple lines (including multi-line parameters)
 					allSymbols = allSymbols.filter(symbol => {
-						return !symbol.range.isSingleLine;
+						const isSingleLine = symbol.range.end.line === symbol.range.start.line;
+						return !isSingleLine;
 					});
 		
 					performFold(activeTextEditor, allSymbols);
@@ -154,9 +156,23 @@ async function performFold(activeTextEditor, symbols) {
 
 	const lines = [];
 	for (let symbol of symbols) {
-		console.log("Folding", vscode.SymbolKind[symbol.kind], symbol.name, "in line", symbol.selectionRange.start.line + 1);
+		const startLine = symbol.range.start.line;
+		const endLine = symbol.range.end.line;
+		
+		// Find the line with the opening brace '{'
+		let foldLine = startLine;
+		for (let lineNum = startLine; lineNum <= endLine; lineNum++) {
+			const line = activeTextEditor.document.lineAt(lineNum).text;
+			if (line.includes('{')) {
+				foldLine = lineNum;
+				break;
+			}
+		}
+		
+		console.log("Folding", vscode.SymbolKind[symbol.kind], symbol.name, "in lines", startLine + 1, "-", endLine + 1);
 
-		lines.push(symbol.selectionRange.start.line);
+		// Use the line with the opening brace for folding
+		lines.push(foldLine);
 	}
 
 	await vscode.commands.executeCommand("editor.fold", {selectionLines: lines});

@@ -2,7 +2,7 @@
   "name": "rightclickcodefolding",
   "displayName": "Right Click Code Folding",
   "description": "Simply fold / unfold / collapse / expand code block / region with a right click context menu. Why remember the shortcut, if you can right click them.",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "icon": "images/rightclickcodefolding.png",
   "engines": {
     "vscode": "^1.96.0"

@@ -4,6 +4,11 @@ All notable changes to the "rightclickcodefolding" extension will be documented 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [1.0.0]
 
-- Initial release
+Initial release.
+
+## [1.1.0]
+
+### Fixed
+- Fixed fold to definition functionality to properly fold method definitions when parameters span multiple lines
